@@ -1,0 +1,27 @@
+eureka:
+   instance:
+      hostname : localhost
+   client:
+      registerWithEureka: true
+      serviceUrl:
+          defaultZone: http://localhost:8761/eureka/
+
+      
+spring:
+  application:
+    name: APIGateway
+  cloud:
+    gateway:
+      routes:
+        - id: PartidaEmAndamento
+          uri: lb://PartidaEmAndamento
+          predicates:
+            - Method=GET
+            - Path=/all,/byLeagueSlug/{leagues},/byLeagueId/{ids}
+        - id: PartidaTerminada
+          uri: lb://PartidaTerminada
+          predicates:
+            - Method=GET
+            - Path=/byPartidaId/{partidaId}
+   
+          
