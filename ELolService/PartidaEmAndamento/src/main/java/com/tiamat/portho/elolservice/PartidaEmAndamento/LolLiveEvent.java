@@ -20,7 +20,7 @@ public class LolLiveEvent {
 	private League league;
 //	private Map<String, Long> tournament;
 //	private List<Object> streams;
-//  private List<Object> matchs;
+//  private Object match;
 	
 	public LolLiveEvent() {
 		super();

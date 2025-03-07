@@ -15,23 +15,33 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/")
 public class PartidaTerminadaController {
 	
-	@Autowired
-	private LiveLolService liveService;
+//	@Autowired
+//	private LiveLolService liveService;
 	@Autowired
 	private IPartidaService partidaService;
 
 	@GetMapping("/byPartidaId/{partidaId}")
 	public ResponseEntity<HasEnded> partidasFinalizadaPorId(@PathVariable Long partidaId) {
 		try {
-		LolEvent le = partidaService.getLolEventByFilter(partidaId , new FilterLolEventById());
+			LolEvent le = partidaService.getLolEventByFilter(partidaId , new FilterLolEventById());
 		
-		if (le.state() != "unstarted" && (le.state() == "completed" || le.type() != "match"))
+			if (isLolEventLive(le)) 
+				return new ResponseEntity<>(new HasEnded(false), HttpStatus.OK);
 			return new ResponseEntity<>(new HasEnded(true), HttpStatus.OK); 
-		return new ResponseEntity<>(new HasEnded(false), HttpStatus.OK);
+		
+		}
+		catch (EmptyMatchException e) {
+			return new ResponseEntity<>(new HasEnded(true), HttpStatus.OK);
 		}
 		catch (Exception e) {
 			return new ResponseEntity<>(new HasEnded(true), HttpStatus.NOT_FOUND);
 		}
+	}
+	
+	public Boolean isLolEventLive(LolEvent le) {
+		return (le.type() == "show" || 
+				le.state() == "inProgress" || 
+				(le.state() != "unstarted" && le.state() != "completed"));
 	}
 	
 }
