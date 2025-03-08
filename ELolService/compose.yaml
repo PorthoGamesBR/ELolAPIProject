@@ -1,0 +1,18 @@
+services:
+  atlas:
+    build: ./ServiceDiscoveryAtlas
+    ports:
+      - "8761:5000"
+  apigateway:
+  	build: ./APIGateway
+    ports:
+      - "8000:5000"
+  partidaemandamento:
+  	build: ./PartidaEmAndamento
+    ports:
+      - "8001:5000"
+  partidaterminada:
+  	build: ./PartidaTerminada
+    ports:
+      - "8002:5000"
+      
