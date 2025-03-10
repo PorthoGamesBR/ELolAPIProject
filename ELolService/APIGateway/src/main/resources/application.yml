@@ -1,6 +1,6 @@
 eureka:
    instance:
-      hostname : localhost
+      hostname : 172.19.0.4
    client:
       registerWithEureka: true
       serviceUrl:
