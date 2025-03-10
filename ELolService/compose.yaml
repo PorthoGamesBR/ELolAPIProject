@@ -2,16 +2,16 @@ services:
   atlas:
     build: ./ServiceDiscoveryAtlas
     ports:
-      - "5000:8761"
+      - "8761:5000"
   apigateway:
     build: ./APIGateway
     ports:
-      - "5000:8000"
+      - "8000:5000"
   partidaemandamento:
     build: ./PartidaEmAndamento
     ports:
-      - "5000:8001"
+      - "8001:5000"
   partidaterminada:
     build: ./PartidaTerminada
     ports:
-      - "5000:8002"
+      - "8002:5000"
