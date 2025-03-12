@@ -6,6 +6,8 @@ eureka:
       serviceUrl:
           defaultZone: http://atlas:8761/eureka/
 
+server:
+	port: 5000
       
 spring:
   application:
