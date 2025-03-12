@@ -2,7 +2,7 @@ services:
   atlas:
     build: ./ServiceDiscoveryAtlas
     ports:
-      - "8761:5000"
+      - "8761:8761"
   apigateway:
     build: ./APIGateway
     ports:
