@@ -1,6 +1,6 @@
 eureka:
    instance:
-      hostname : atlas
+      hostname : 192.168.15.21
    client:
       registerWithEureka: true
       serviceUrl:
