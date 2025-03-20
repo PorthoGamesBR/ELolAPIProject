@@ -6,12 +6,12 @@ services:
   apigateway:
     build: ./APIGateway
     ports:
-      - "8000:5000"
+      - "8000:8000"
   partidaemandamento:
     build: ./PartidaEmAndamento
     ports:
-      - "8001:5000"
+      - "8001:8001"
   partidaterminada:
     build: ./PartidaTerminada
     ports:
-      - "8002:5000"
+      - "8002:8002"
